@@ -4,12 +4,20 @@
   "description": "Show spotify status on misskey",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node src"
   },
   "keywords": [
     "misskey",
     "spotify"
   ],
   "author": "hytracer",
-  "license": "SEE LICENSE IN LICENSE"
+  "license": "SEE LICENSE IN LICENSE",
+  "dependencies": {
+    "axios": "^1.4.0",
+    "electron": "^25.2.0",
+    "misskey-js": "^0.0.16",
+    "node-spotify-webhelper": "^0.0.6",
+    "path": "^0.12.7"
+  }
 }
