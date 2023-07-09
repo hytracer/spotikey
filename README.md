@@ -42,7 +42,7 @@ To run spotikey, you will need to add the following environment variables to you
 
 `MISSKEY_ACCESS_TOKEN`: Your Access Token
 
-You need to [create a spotify application](https://developer.spotify.com/documentation/web-api/tutorials/getting-started) and a misskey api key to run spotikey.
+You need to [create a spotify application](https://developer.spotify.com/documentation/web-api/tutorials/getting-started) and a misskey api key to run spotikey. **Make sure to add `localhost:8888/callback` in your redirect URLs.**
 
 ## Tech Stack
 
