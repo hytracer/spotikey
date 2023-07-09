@@ -2,10 +2,45 @@
   "name": "spotikey",
   "version": "1.0.0",
   "description": "Show spotify status on misskey",
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node src/index.js"
+    "dev": "electron .",
+    "pkg": "pkg -c pkg-config.js --out-dir dist src/index.js",
+    "build": "npx electron-builder"
+  },
+  "pkg": {
+    "scripts": "src/index.js",
+    "assets": [
+      "node_modules/opn/xdg-open",
+      "node_modules/electron/dist",
+      "node_modules/sliced/index.js",
+      "node_modules/deep-defaults/lib/index.js"
+    ],
+    "postbuild": "pkg-assets"
+  },
+  "build": {
+    "appId": "ink.hytracer.spotikey",
+    "productName": "spotikey",
+    "linux": {
+      "target": [
+        "AppImage"
+      ]
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "assets/icon.png"
+    },
+    "extraFiles": [
+      {
+        "from": "assets/icon.png",
+        "to": "./assets/icon.png"
+      },
+      {
+        "from": "POSTINSTALL.txt",
+        "to": "./"
+      }
+    ]
   },
   "keywords": [
     "misskey",
@@ -16,21 +51,28 @@
   "dependencies": {
     "axios": "^1.4.0",
     "dotenv": "^16.3.1",
-    "electron": "^25.2.0",
+    "electron-first-run": "^3.0.0",
     "express": "^4.18.2",
+    "fs": "^0.0.1-security",
     "misskey-js": "^0.0.16",
     "node-fetch": "^2.6.12",
     "node-spotify-webhelper": "^0.0.6",
     "opn": "^6.0.0",
     "path": "^0.12.7",
     "spotify-web-api-node": "^5.0.2",
-    "spotify-web-helper": "^1.14.0"
+    "spotify-web-helper": "^1.14.0",
+    "systray": "^1.0.5"
   },
   "devDependencies": {
     "@babel/cli": "^7.22.6",
     "@babel/core": "^7.22.8",
     "@babel/preset-env": "^7.22.7",
     "@babel/register": "^7.22.5",
-    "esm": "^3.2.25"
+    "app-builder-bin": "^4.1.2",
+    "electron": "^25.2.0",
+    "electron-builder": "^24.4.0",
+    "esm": "^3.2.25",
+    "fs-extra": "^11.1.1",
+    "pkg-assets": "^0.1.0"
   }
 }
